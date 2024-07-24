@@ -23,12 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<UserEntity> updateUser(Long id, UserEntity user) {
-        return userRepository.findById(id)
-                .map(existingUser -> {
-                    existingUser.setFullName(user.getFullName());
-                    existingUser.setAge(user.getAge());
-                    return userRepository.save(existingUser);
-                });
+        return userRepository.findById(id).map(existingUser -> {
+            existingUser.setFullName(user.getFullName());
+            existingUser.setAge(user.getAge());
+            return userRepository.save(existingUser);
+        });
     }
 
     @Override
